@@ -1,146 +1,178 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <title>DTU Communities</title>
+﻿<!DOCTYPE html>
+<!--[if lt IE 7 ]><html class="ie ie6" lang="en"> <![endif]-->
+<!--[if IE 7 ]><html class="ie ie7" lang="en"> <![endif]-->
+<!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!--><html lang="en"> <!--<![endif]-->
+<head>
 
-    <script src="libs/d3.min.js"></script>
-    <script src="libs/jquery.js"></script>
-    <script src="libs/d3-tip.js"></script>
-    <script src="libs/bootstrap/js/tab.js"></script>
-    <script src="libs/bootstrap/js/slider.js"></script>
-    <script src='libs/spin.min.js'></script> 
+    <!-- Basic Page Needs
+  ================================================== -->
+	<meta charset="utf-8">
+	<title>Thesis d3vis</title>
+	<meta name="description" content="Webpage for d3 visualisations made during my master thesis">
+	<meta name="author" content="www.zerotheme.com">
+	
+    <!-- Mobile Specific Metas
+  ================================================== -->
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <link href="libs/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link href="libs/bootstrap/css/bootstrap-slider.css" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="./viz.css">
-
-  </head>
-  <body>
-
-<div style="width: 100%; overflow: hidden;">
-    <div id='w1'></div>
-    <div id='w2'></div>
-    <div id='w3'>
-
-      <!-- Slider (smallest allowed group size) -->
-      <input id="ex6" data-slider-id='ex6Slider' type="text" data-slider-min="2" data-slider-max="10" data-slider-step="1" data-slider-value="2"/>
-
-      <!-- Radio buttons (day of week) -->
-      <div class="btn-group btn-group-justified" id="myButtonGroup" data-toggle="buttons">
-        <label class="btn btn-default active">
-            <input type="radio" id="datasetMon" name="quality[25]" checked="checked" value="1" /> Mon
-        </label> 
-        <label class="btn btn-default">
-            <input type="radio" id="datasetTue" name="quality[25]" value="2" /> Tue
-        </label> 
-        <label class="btn btn-default">
-            <input type="radio" id="datasetWed" name="quality[25]" value="3" /> Wed
-        </label> 
-        <label class="btn btn-default">
-            <input type="radio" id="datasetThu" name="quality[25]" value="4" /> Thu
-        </label> 
-        <label class="btn btn-default">
-            <input type="radio" id="datasetFri" name="quality[25]" value="5" /> Fri
-        </label>
-        <label class="btn btn-default">
-            <input type="radio" id="datasetSat" name="quality[25]" value="6" /> Sat
-        </label>
-        <label class="btn btn-default">
-            <input type="radio" id="datasetSun" name="quality[25]" value="7" /> Sun
-        </label>
-    </div>
-
-    </div>
-
-    <div id='w4'>
-
-        <!-- Nav tabs -->
-        <ul class="nav nav-tabs" role="tablist">
-          <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">About</a></li>
-          <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Guidebook</a></li>
-        </ul>
-
-        <!-- Tab panes -->
-        <div class="tab-content">
-          <div role="tabpanel" class="tab-pane active" id="home">
-            <br>
-            <p class='sidebar-text'>
-            This visualization shows how university students flow through social communities throughout a day. On the left you see how meetups stretch out over time and above is a network showing social connections in the narrow time span illustrated as a blue ribbon on the left, initiated around 9 AM.
-
-            <br><br>
-
-            The data used in this visualisation consists of physical meetings throughout a day, recorded as bluetooth connections between phones carried by the over 500+ participants. Each meeting is represented as a link in the network above, and each node represents a person. The social communities are inferred using <a href="http://mapequation.org/">the Map Equation</a>.
-
-            <br><br>
-
-            This visualization is the result of a student research project conducted in collaboration with the  <a href="http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0095978">Copenhagen Networks Study</a>. The code is shared on <a href="https://github.com/ulfaslak/InfomapSensibleDTU">Github</a>.
-          </p>
-
-            <br>
-
-            <p align="right"> Produced by <a href="http://ulfaslak.com/">Ulf Aslak</a>, &copy;2015.
-            </p>
-          </div>
-          <div role="tabpanel" class="tab-pane" id="profile">
-            <br>
-            <p class='sidebar-text'>Try hovering over a community-strip on the left. This removes all communities that have no members in common with the one you are hovering over. Now click it! This enables you to move the curser around and hover over the visible communities to see how similar they are to the one you clicked. 
-
-            <br><br>
-
-            Play around with the arrow keys. This is how you shuffle through time, with 5 minutes steps. Note how the graph updates and that the blue time ribbon (initiated at 9 AM) moves vertically. Pan or zoom on the graph to manipulate its location. Double click a node to focus on its community as you shuffle through time. Hold <kbd>shift</kbd> for slow motion. Click a time stamp to jump to a different place in time. 
-
-            <br><br>
-
-            The slider above controls the minimum allowed size for groups in the visualisation. If it is set to 5, groups whose maximum size is lower than this is not shown. Below that you can choose which day of the week to show in the visualisation.
-          </p>
-
-            <table class="table table-striped"> 
-              <thead> 
-                <tr> 
-                  <th>Key</th> 
-                  <th>Description</th> 
-                </tr> 
-              </thead> 
-              <tbody> 
-                <tr> 
-                  <th scope="row"><p>&nbsp;&nbsp;&nbsp;&uarr;</p></th> 
-                  <td>Next time step</td> 
-                </tr> 
-                <tr> 
-                  <th scope="row"><p>&nbsp;&nbsp;&nbsp;&darr;</p></th> 
-                  <td>Previous time step</td> 
-                </tr> 
-                <tr> 
-                  <th scope="row"><p><kbd>shift</kbd> + &uarr;/&darr;</p></th> 
-                  <td>Slow time step</td> 
-                </tr> 
-                <tr> 
-                  <th scope="row"><p><kbd>alt</kbd></p></th> 
-                  <td>Toggle person Ids</td> 
-                </tr> 
-                <tr> 
-                  <th scope="row"><p><kbd>esc</kbd></p></th> 
-                  <td>Revert to normal mode</td> 
-                </tr> 
-              </tbody> 
-            </table>
-
-          </div>
-        </div>
-    </div>
-
+    <!-- CSS
+  ================================================== -->
+  	<link rel="stylesheet" href="css/zerogrid.css">
+	<link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+	
+	<!--[if lt IE 8]>
+       <div style=' clear: both; text-align:center; position: relative;'>
+         <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
+           <img src="http://storage.ie6countdown.com/assets/100/images/banners/warning_bar_0000_us.jpg" border="0" height="42" width="820" alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today." />
+        </a>
+      </div>
+    <![endif]-->
+    <!--[if lt IE 9]>
+		<script src="js/html5.js"></script>
+		<script src="js/css3-mediaqueries.js"></script>
+	<![endif]-->
+	
+	<!-- link href='./images/favicon.ico' rel='icon' type='image/x-icon'/ --> <!-- FOR TAB ICON -->
     
-</div>
+</head>
+<body>
+<!-- Header -->
+<header>
+	<div class="wrap-header zerogrid">
+		<!-- div id="logo"><a href="#"><img src="./images/logo.png"/></a></div -->
+		<nav>
+			<div class="wrap-nav">
+				<div class="menu">
+					<ul>
+						<li><a href="index.html">these</a></li>
+						<li><a href="#">links</a></li>
+						<li><a href="#">lead</a></li>
+						<li><a href="#">to</a></li>
+						<li><a href="#">nowhere</a></li>
+					</ul>
+				</div>
+				
+				<div class="minimenu"><div>MENU</div>
+					<select onchange="location=this.value">
+						<option></option>
+						<option value="index.html">Home</option>
+						<option value="#">Blog</option>
+						<option value="#">Gallery</option>
+						<option value="#">About</option>
+						<option value="#">Contact</option>
+					</select>
+				</div>
+			</div>
+		</nav>
+	</div>
+</header>
 
-<script type="text/javascript">
-$('#myTabs a').click(function (e) {
-  e.preventDefault()
-  $(this).tab('show')
-})
-</script>
+<!-- Content -->
+<section id="content">
+	<div class="wrap-content zerogrid">
+		<div class="row block">
+			<div id="main-content" class="col-2-3">
+				<div class="wrap-col">
+					<article>
+						<div class="heading">
+							<h2><a href="bluevis/bluevis.html">Bluetooth temporal view</a></h2>
+							<!-- div class="info">By Admin on December 01, 2012 with <a href="#">01 Commnets</a></div -->
+						</div>
+						<div class="content">
+							<a href="bluevis/bluevis.html"><img src="images/facebook_thumb.png" , style="width:400px;height:400px;" /></a>
+							<p>This is temporal view bluetooth</p>
+							<!-- p class="more"><a class="button" href="#">Read more</a></p -->
+						</div>
+					</article>
+					<article>
+						<div class="heading">
+							<h2><a href="facevis/facevis.html">Facebook temporal view</a></h2>
+							<!-- div class="info">By Admin on December 01, 2012 with <a href="#">01 Commnets</a></div -->
+						</div>
+						<div class="content">
+							<a href="facevis/facevis.html"><img src="images/facebook_thumb.png" , style="width:400px;height:400px;" /></a>
+							<p>This is temporal view facebook</p>
+							<!-- p class="more"><a class="button" href="#">Read more</a></p -->
+						</div>
+					</article>
+					<article>
+						<div class="heading">
+							<h2><a href="egoview/ego.html">Bluetooth egoview</a></h2>
+						</div>
+						<div class="content">
+							<a href="egovis/ego.html"><img src="images/ego_example.png" , style="width:400px;height:400px;"/></a>
+							<p>This is the egoview</p>
 
-<script src="./viz.js"></script>
-    
-  </body>
-</html>
+							<!-- p class="more"><a class="button" href="#">Read more</a></p -->
+						</div>
+					</article>
+					<!-- article>
+						<div class="heading">
+							<h2><a href="#">Sed accumsan libero quis mi commodo et suscipit</a></h2>
+							<div class="info">By Admin on December 01, 2012 with <a href="#">01 Commnets</a></div>
+						</div>
+						<div class="content">
+							<img src="images/300x300.jpg"/>
+							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam viverra convallis auctor. Sed accumsan libero quis mi commodo et suscipit enim lacinia. Morbi rutrum vulputate est sed faucibus. Nulla sed nisl mauris, id tristique tortor. Sed iaculis dapibus urna nec dictum. Proin non enim odio. Proin vitae turpis libero, eget feugiat enim. Sed fringilla facilisis convallis.</p>
+							<p>Aliquam viverra convallis auctor. Morbi rutrum vulputate est sed faucibus. Nulla sed nisl mauris, id tristique tortor. Sed iaculis dapibus urna nec dictum. Proin non enim odio.</p>
+							<p class="more"><a class="button" href="#">Read more</a></p>
+						</div>
+					</article -->
+					
+					<!-- ul id="pagi">
+						<li><a class="current" href="#">1</a></li>
+						<li><a href="#">2</a></li>
+						<li><a href="#">3</a></li>
+						<li><a href="#">4</a></li>
+						<li><a href="#">next</a></li>
+					</ul -->
+					
+				</div>
+			</div>
+			<div id="sidebar" class="col-1-3">
+				<div class="wrap-col">
+					<div class="box">
+						<div class="heading"><h2>About</h2></div>
+						<div class="content">
+							<p>Hello, my name is Daniel Heestermans Svendsen, a student at DTU pursuing a degree in Mathematical Modelling and Computation. This is a webpage for putting up the visualizations made in the progress of writing my master thesis.</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<!-- Footer -->
+<footer>
+	<div class="wrap-footer zerogrid">
+		<div class="row">
+			<!-- div class="col-1-3">
+				<div class="wrap-col">
+					<div class="box">
+						<div class="heading"><h2>Text Heading</h2></div>
+						<div class="content">
+							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam viverra convallis auctor. Sed accumsan libero quis mi commodo et suscipit enim lacinia. Morbi rutrum vulputate est sed faucibus. </p>
+						</div>
+					</div>
+				</div>
+			</div -->
+			<!-- div class="col-2-3">
+				<div class="wrap-col">
+					<div class="box">
+						<div class="heading"><h2>Text Heading</h2></div>
+						<div class="content">
+							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam viverra convallis auctor. Sed accumsan libero quis mi commodo et suscipit enim lacinia. Morbi rutrum vulputate est sed faucibus. Nulla sed nisl mauris, id tristique tortor. Sed iaculis dapibus urna nec dictum. Proin non enim odio. Proin vitae turpis libero, eget feugiat enim. Sed fringilla facilisis convallis.</p>
+						</div>
+					</div>
+				</div>
+			</div -->
+		</div>
+	</div>
+	<div class="copyright">
+		<p>Copyright © 2012 - <a href="http://www.zerotheme.com" target="_blank">Zerotheme</a></p>
+	</div>
+</footer>
+
+</body></html>
