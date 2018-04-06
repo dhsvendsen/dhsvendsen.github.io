@@ -213,7 +213,10 @@ code.language-yaml {
     </head>
     <body for="html-export">
       <div class="mume markdown-preview   ">
-      <h1 class="mume-header" id="gaussian-processes">Gaussian Processes</h1>
+
+      <h1 class="mume-header" id="jgps">Joint Gaussian Processes</h1>
+      <p> Explanation, for the interested few, of what is going on in the paper <a href="https://arxiv.org/abs/1711.05197 ">Joint Gaussian Processes for Biophysical Parameter Retrieval</a> </p> (almost finished)
+      <h2 class="mume-header" id="gaussian-processes">Gaussian Processes</h2>
 
 <p>GPs are state-of-the-art tools for regression and function approximation, and have been recently shown to excel in biophysical variable retrieval by following both statistical and hybrid approaches. Let us consider a set of <span class="mathjax-exps">$n$</span> pairs of observations or measurements, <span class="mathjax-exps">${&#x5C;mathcal D}_n:=&#x5C;{&#x5C;mathbf{x}_i,y_i&#x5C;}_{i=1}^n$</span>, perturbed by an additive independent noise. The input data pairs <span class="mathjax-exps">$(&#x5C;mathbf{x},y)$</span> used to fit the inverse machine learning model <span class="mathjax-exps">$f(&#x5C;cdot)$</span> come from either {\em in situ} field campaign data (statistical approach) or simulations by means of an RTM (hybrid approach).<br>
 We assume the following model,</p>
@@ -229,7 +232,7 @@ Now, what we are really interested in is predicting a new output <span class="ma
 Thus, GPs yield not only predictions <span class="mathjax-exps">$&#x5C;mu_{&#x5C;text{GP}&#x5C;ast}$</span> for test<br>
 data, but also the so-called ``error-bars'', <span class="mathjax-exps">$&#x5C;sigma_{&#x5C;text{GP}&#x5C;ast}$</span>, assessing the uncertainty<br>
 of the mean prediction. The hyperparameters <span class="mathjax-exps">$&#x5C;mathbf{&#x5C;theta}=[&#x5C;sigma, &#x5C;sigma_n]$</span> to be tuned in the GP determine the width of the squared exponential kernel function and the noise on the observations. This can be done by marginal likelihood maximization or simple grid search, attempting to minimize the squared prediction errors.</p>
-<h1 class="mume-header" id="jointly-modeling-real-and-simulated-data-joint-gp">Jointly modeling real and simulated data (Joint GP)</h1>
+<h2 class="mume-header" id="jointly-modeling-real-and-simulated-data-joint-gp">Jointly modeling real and simulated data (Joint GP)</h2>
 
 <p>where the parameter <span class="mathjax-exps">$&#x5C;gamma&gt;0$</span> accounts for the importance of the two sources of information relative to each other.</p>
 <p>The resulting distribution of <span class="mathjax-exps">$&#x5C;mathbf{y}$</span> given <span class="mathjax-exps">$&#x5C;mathbf{f}$</span> is only slightly different from that of the regular GP, namely <span class="mathjax-exps">$p(&#x5C;mathbf{y}|&#x5C;mathbf{f}) = &#x5C;mathcal{N}(&#x5C;mathbf{f}, &#x5C;sigma_n^2 &#x5C;mathbf{V})$</span> where <span class="mathjax-exps">$&#x5C;mathbf{V}$</span> is an <span class="mathjax-exps">$n&#x5C;times n$</span> diagonal matrix in which the first <span class="mathjax-exps">$r$</span> diagonal elements are equal to <span class="mathjax-exps">$1$</span> and the remaining <span class="mathjax-exps">$s$</span> are equal to <span class="mathjax-exps">$&#x5C;gamma^{-1}$</span>: <span class="mathjax-exps">$&#x5C;mathbf{V}=&#x5C;text{diag}(1,&#x5C;ldots,1,&#x5C;gamma^{-1},&#x5C;ldots, &#x5C;gamma^{-1})$</span>.<br>
