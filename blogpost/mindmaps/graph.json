@@ -1,0 +1,242 @@
+{
+  "nodes": [
+    {
+      "name": "Bayesian Modeling",
+      "label": "",
+      "id": 1
+    },
+    {
+      "name": "Regression",
+      "label": "",
+      "id": 2
+    },
+    {
+      "name": "Gaussian Distributions",
+      "label": "",
+      "id": 3
+    },
+    {
+      "name": "Kernel Functions",
+      "label": "",
+      "id": 4
+    },
+    {
+      "name": "Derivates",
+      "label": "",
+      "id": 5
+    },
+    {
+      "name": "Matrix Calculus",
+      "label": "",
+      "id": 6
+    },
+    {
+      "name": "Gaussian Processes",
+      "label": "",
+      "id": 7
+    },
+    {
+      "name": "Kernel Matrix Approximations",
+      "label": "",
+      "id": 8
+    },
+    {
+      "name": "Sensitivity Analysis",
+      "label": "",
+      "id": 9
+    },
+    {
+      "name": "Graphical Models",
+      "label": "",
+      "id": 10
+    },
+    {
+      "name": "Latent Variable Models",
+      "label": "",
+      "id": 11
+    },
+    {
+      "name": "Sparse GPs",
+      "label": "",
+      "id": 12
+    },
+    {
+      "name": "Variational GPs",
+      "label": "",
+      "id": 13
+    },
+    {
+      "name": "Variational Inference",
+      "label": "",
+      "id": 14
+    },
+    {
+      "name": "Kullback-Leibler Divergence",
+      "label": "",
+      "id": 15
+    },
+    {
+      "name": "Jensens Inequality",
+      "label": "",
+      "id": 16
+    },
+    {
+      "name": "Identity trick",
+      "label": "",
+      "id": 17
+    },
+    {
+      "name": "Variational Sparse GPs",
+      "label": "",
+      "id": 18
+    },
+    {
+      "name": "GP Latent Variable Model",
+      "label": "",
+      "id": 19
+    },
+    {
+      "name": "Bayesian GPLVM",
+      "label": "",
+      "id": 20
+    },
+    {
+      "name": "Deep GPs",
+      "label": "",
+      "id": 21
+    },
+    {
+      "name": "Error Propagation",
+      "label": "",
+      "id": 22
+    }
+  ],
+  "links": [
+    {
+      "source": 1,
+      "target": 7,
+      "type": "",
+      "since": 2010
+    },
+    {
+      "source": 2,
+      "target": 7,
+      "type": ""
+    },
+    {
+      "source": 3,
+      "target": 7,
+      "type": ""
+    },
+    {
+      "source": 4,
+      "target": 7,
+      "type": " "
+    },
+    {
+      "source": 4,
+      "target": 5,
+      "type": " "
+    },
+    {
+      "source": 6,
+      "target": 5,
+      "type": " "
+    },
+    {
+      "source": 5,
+      "target": 9,
+      "type": " "
+    },
+    {
+      "source": 7,
+      "target": 9,
+      "type": " "
+    },
+    {
+      "source": 7,
+      "target": 12,
+      "type": " "
+    },
+    {
+      "source": 7,
+      "target": 13,
+      "type": " "
+    },
+    {
+      "source": 12,
+      "target": 18,
+      "type": " "
+    },
+    {
+      "source": 13,
+      "target": 18,
+      "type": " "
+    },
+    {
+      "source": 14,
+      "target": 13,
+      "type": " "
+    },
+    {
+      "source": 15,
+      "target": 14,
+      "type": " "
+    },
+    {
+      "source": 16,
+      "target": 14,
+      "type": " "
+    },
+    {
+      "source": 17,
+      "target": 14,
+      "type": " "
+    },
+    {
+      "source": 10,
+      "target": 11,
+      "type": " "
+    },
+    {
+      "source": 11,
+      "target": 19,
+      "type": " "
+    },
+    {
+      "source": 19,
+      "target": 20,
+      "type": " "
+    },
+    {
+      "source": 18,
+      "target": 20,
+      "type": " "
+    },
+    {
+      "source": 13,
+      "target": 20,
+      "type": " "
+    },
+    {
+      "source": 18,
+      "target": 21,
+      "type": " "
+    },
+    {
+      "source": 19,
+      "target": 21,
+      "type": " "
+    },
+    {
+      "source": 8,
+      "target": 12,
+      "type": " "
+    },
+    {
+      "source": 20,
+      "target": 22,
+      "type": " "
+    }
+  ]
+}
