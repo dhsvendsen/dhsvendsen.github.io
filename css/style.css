@@ -70,7 +70,7 @@ nav .wrap-nav{position:absolute; top:50px; right:10px; height: 37px;}
 #main-content article h1{font-size:22px; line-height:25px; margin-bottom:4px;}
 #main-content article p{margin-right:40px; margin-top:-1px}
 #main-content article .info{font-style:italic;}
-#main-content article img{float:left; margin:10px 10px 10px 0; padding:5px; border:1px solid #CCC;}
+#main-content article img{float:left; margin:10px 10px 10px 0; padding:5px; border:0px solid #CCC;}
 #main-content article p{margin-bottom:10px;}
 #main-content article .more{float:right; margin-bottom: 30px}
 
